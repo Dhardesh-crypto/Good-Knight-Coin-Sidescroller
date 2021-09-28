@@ -1,0 +1,944 @@
+{
+	"textures": [
+		{
+			"image": "NinjaCat.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1273,
+				"h": 1016
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "NinjaCat_attack_sword_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 4,
+						"w": 226,
+						"h": 210
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 226,
+						"h": 210
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_sword_08.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 14,
+						"w": 169,
+						"h": 201
+					},
+					"frame": {
+						"x": 1,
+						"y": 213,
+						"w": 169,
+						"h": 201
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_sword_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 169,
+						"h": 199
+					},
+					"frame": {
+						"x": 1,
+						"y": 416,
+						"w": 169,
+						"h": 199
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_kick_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 14,
+						"w": 168,
+						"h": 200
+					},
+					"frame": {
+						"x": 1,
+						"y": 617,
+						"w": 168,
+						"h": 200
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_sword_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 19,
+						"w": 143,
+						"h": 195
+					},
+					"frame": {
+						"x": 1,
+						"y": 819,
+						"w": 143,
+						"h": 195
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 18,
+						"w": 142,
+						"h": 196
+					},
+					"frame": {
+						"x": 146,
+						"y": 819,
+						"w": 142,
+						"h": 196
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_sword_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 170,
+						"h": 197
+					},
+					"frame": {
+						"x": 171,
+						"y": 617,
+						"w": 170,
+						"h": 197
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_punch_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 17,
+						"w": 161,
+						"h": 199
+					},
+					"frame": {
+						"x": 290,
+						"y": 816,
+						"w": 161,
+						"h": 199
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_sword_07.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 11,
+						"w": 159,
+						"h": 205
+					},
+					"frame": {
+						"x": 172,
+						"y": 213,
+						"w": 159,
+						"h": 205
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_sword_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 13,
+						"w": 153,
+						"h": 202
+					},
+					"frame": {
+						"x": 229,
+						"y": 1,
+						"w": 153,
+						"h": 202
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 11,
+						"w": 141,
+						"h": 174
+					},
+					"frame": {
+						"x": 172,
+						"y": 420,
+						"w": 141,
+						"h": 174
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 20,
+						"w": 125,
+						"h": 195
+					},
+					"frame": {
+						"x": 315,
+						"y": 420,
+						"w": 125,
+						"h": 195
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_sword_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 17,
+						"w": 143,
+						"h": 197
+					},
+					"frame": {
+						"x": 343,
+						"y": 617,
+						"w": 143,
+						"h": 197
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_sword_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 11,
+						"w": 143,
+						"h": 198
+					},
+					"frame": {
+						"x": 453,
+						"y": 816,
+						"w": 143,
+						"h": 198
+					}
+				},
+				{
+					"filename": "NinjaCat_idlesword_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 11,
+						"w": 149,
+						"h": 204
+					},
+					"frame": {
+						"x": 333,
+						"y": 205,
+						"w": 149,
+						"h": 204
+					}
+				},
+				{
+					"filename": "NinjaCat_idlesword_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 11,
+						"w": 149,
+						"h": 204
+					},
+					"frame": {
+						"x": 442,
+						"y": 411,
+						"w": 149,
+						"h": 204
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_sword_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 18,
+						"w": 142,
+						"h": 196
+					},
+					"frame": {
+						"x": 488,
+						"y": 617,
+						"w": 142,
+						"h": 196
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_sword_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 14,
+						"w": 143,
+						"h": 200
+					},
+					"frame": {
+						"x": 598,
+						"y": 815,
+						"w": 143,
+						"h": 200
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_sword_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 13,
+						"w": 150,
+						"h": 202
+					},
+					"frame": {
+						"x": 384,
+						"y": 1,
+						"w": 150,
+						"h": 202
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_sword_06.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 137,
+						"h": 200
+					},
+					"frame": {
+						"x": 484,
+						"y": 205,
+						"w": 137,
+						"h": 200
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_sword_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 136,
+						"h": 200
+					},
+					"frame": {
+						"x": 593,
+						"y": 407,
+						"w": 136,
+						"h": 200
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_punch_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 13,
+						"w": 132,
+						"h": 202
+					},
+					"frame": {
+						"x": 632,
+						"y": 609,
+						"w": 132,
+						"h": 202
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_kick_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 14,
+						"w": 133,
+						"h": 200
+					},
+					"frame": {
+						"x": 743,
+						"y": 813,
+						"w": 133,
+						"h": 200
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_kick_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 14,
+						"w": 133,
+						"h": 200
+					},
+					"frame": {
+						"x": 536,
+						"y": 1,
+						"w": 133,
+						"h": 200
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_punch_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 14,
+						"w": 131,
+						"h": 202
+					},
+					"frame": {
+						"x": 623,
+						"y": 203,
+						"w": 131,
+						"h": 202
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_05.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 129,
+						"h": 197
+					},
+					"frame": {
+						"x": 731,
+						"y": 407,
+						"w": 129,
+						"h": 197
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_punch_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 11,
+						"w": 126,
+						"h": 204
+					},
+					"frame": {
+						"x": 766,
+						"y": 606,
+						"w": 126,
+						"h": 204
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_sword_05.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 129,
+						"h": 197
+					},
+					"frame": {
+						"x": 878,
+						"y": 812,
+						"w": 129,
+						"h": 197
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 125,
+						"h": 200
+					},
+					"frame": {
+						"x": 671,
+						"y": 1,
+						"w": 125,
+						"h": 200
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_sword_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 13,
+						"w": 125,
+						"h": 201
+					},
+					"frame": {
+						"x": 756,
+						"y": 203,
+						"w": 125,
+						"h": 201
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 125,
+						"h": 197
+					},
+					"frame": {
+						"x": 862,
+						"y": 406,
+						"w": 125,
+						"h": 197
+					}
+				},
+				{
+					"filename": "NinjaCat_idle_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 11,
+						"w": 125,
+						"h": 204
+					},
+					"frame": {
+						"x": 894,
+						"y": 605,
+						"w": 125,
+						"h": 204
+					}
+				},
+				{
+					"filename": "NinjaCat_idle_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 11,
+						"w": 125,
+						"h": 204
+					},
+					"frame": {
+						"x": 1009,
+						"y": 811,
+						"w": 125,
+						"h": 204
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 125,
+						"h": 200
+					},
+					"frame": {
+						"x": 798,
+						"y": 1,
+						"w": 125,
+						"h": 200
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 13,
+						"w": 125,
+						"h": 201
+					},
+					"frame": {
+						"x": 883,
+						"y": 203,
+						"w": 125,
+						"h": 201
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_sword_06.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 28,
+						"y": 25,
+						"w": 128,
+						"h": 188
+					},
+					"frame": {
+						"x": 989,
+						"y": 406,
+						"w": 128,
+						"h": 188
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_07.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 12,
+						"w": 125,
+						"h": 204
+					},
+					"frame": {
+						"x": 1021,
+						"y": 596,
+						"w": 125,
+						"h": 204
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_06.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 14,
+						"w": 125,
+						"h": 201
+					},
+					"frame": {
+						"x": 1136,
+						"y": 802,
+						"w": 125,
+						"h": 201
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 125,
+						"h": 199
+					},
+					"frame": {
+						"x": 925,
+						"y": 1,
+						"w": 125,
+						"h": 199
+					}
+				},
+				{
+					"filename": "NinjaCat_walk_08.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 14,
+						"w": 125,
+						"h": 201
+					},
+					"frame": {
+						"x": 1010,
+						"y": 202,
+						"w": 125,
+						"h": 201
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_06.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 26,
+						"w": 127,
+						"h": 188
+					},
+					"frame": {
+						"x": 1119,
+						"y": 405,
+						"w": 127,
+						"h": 188
+					}
+				},
+				{
+					"filename": "NinjaCat_attack_kick_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 13,
+						"w": 124,
+						"h": 202
+					},
+					"frame": {
+						"x": 1148,
+						"y": 595,
+						"w": 124,
+						"h": 202
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_sword_05.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 17,
+						"w": 125,
+						"h": 190
+					},
+					"frame": {
+						"x": 1052,
+						"y": 1,
+						"w": 125,
+						"h": 190
+					}
+				},
+				{
+					"filename": "NinjaCat_jump_05.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 222
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 18,
+						"w": 124,
+						"h": 190
+					},
+					"frame": {
+						"x": 1137,
+						"y": 193,
+						"w": 124,
+						"h": 190
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:02a03e1bb0d58a7d22911ef7de06c1ed:bae39740b898be92c7be2834a52e6da5:e8b2a4c2339fb131d417e1fadc7d03a2$"
+	}
+}
