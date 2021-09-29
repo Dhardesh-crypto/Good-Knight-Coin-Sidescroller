@@ -33,7 +33,7 @@ export default class GameScene extends Phaser.Scene {
 
     preload() 
     {
-        this.load.atlas('ninjacat', 'assets/NinjaCat.png', 'assets/NInjaCat.json');
+        this.load.atlas('ninjacat', 'assets/NinjaCat.png', 'assets/NinjaCat.json');
         this.load.image('level-1', 'assets/tilesheet/sheet-snow.png');
         this.load.tilemapTiledJSON('tilemap-level-1', 'assets/level-1.json');
     }
@@ -56,7 +56,7 @@ export default class GameScene extends Phaser.Scene {
                     .setScale(0.5)
                     .setFixedRotation();
 
-                    this.playerController = new PlayerController(this.ninjaCat, this.cursors, this.cursorsWASD, this.movementSpeed, this.jumpHeight);
+                    this.playerController = new PlayerController(this.ninjaCat, this.cursors, this.cursorsWASD, this.movementSpeed, this.jumpHeight, this);
 
                     this.cameras.main.startFollow(this.ninjaCat);        
                     break;
