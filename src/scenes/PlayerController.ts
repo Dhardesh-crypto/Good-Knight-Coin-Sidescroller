@@ -38,13 +38,16 @@ export default class PlayerController
                 onUpdate: this.jumpingOnUpdate
             })
             .addState('kicking', {
-                onEnter: this.kickingOnEnter
+                onEnter: this.kickingOnEnter,
+                onUpdate: this.kickingOnUpdate
             })
             .addState('punching', {
-                onEnter: this.punchingOnEnter
+                onEnter: this.punchingOnEnter,
+                onUpdate: this.punchingOnUpdate
             })
             .addState('attacking', {
-                onEnter: this.attackingOnEnter
+                onEnter: this.attackingOnEnter,
+                onUpdate: this.attackingOnUpdate
             })
             .setState('idle');
 
@@ -81,6 +84,11 @@ export default class PlayerController
         {
             this.stateMachine.setState('jumping');
         }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) 
+        {
+            this.stateMachine.setState('attacking');
+        }
     }
     private walkingOnEnter()
     {
@@ -108,6 +116,11 @@ export default class PlayerController
         {
             this.stateMachine.setState('jumping');
         }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) 
+        {
+            this.stateMachine.setState('attacking');
+        }
     }
     private jumpingOnEnter()
     {
@@ -133,18 +146,47 @@ export default class PlayerController
             this.sprite.setVelocityX(this.movementSpeed);
             this.sprite.flipX = false;
         }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) 
+        {
+            this.stateMachine.setState('attacking');
+        }
+        
     }
     private kickingOnEnter()
     {
         this.sprite.play('kicking');
     }
+    private kickingOnUpdate() 
+    {
+
+    }
     private punchingOnEnter()
     {
         this.sprite.play('punching');
     }
+    private punchingOnUpdate()
+    {
+
+    }
     private attackingOnEnter()
     {
         this.sprite.play('attacking');
+    }
+    private attackingOnUpdate()
+    {
+        if (this.cursors.left.isDown || this.cursorsWASD.left.isDown ||
+            this.cursors.right.isDown || this.cursorsWASD.right.isDown) {
+            this.stateMachine.setState('walking');
+        }
+
+        const upKeyJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.up);
+        const wKeyJustPressed = Phaser.Input.Keyboard.JustDown(this.cursorsWASD.up);
+       
+        if (upKeyJustPressed || wKeyJustPressed)
+        {
+            this.stateMachine.setState('jumping');
+        }
     }
 
     private createAnimations() 
