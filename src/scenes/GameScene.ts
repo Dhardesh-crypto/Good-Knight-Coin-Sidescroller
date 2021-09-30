@@ -24,7 +24,7 @@ export default class GameScene extends Phaser.Scene {
             left: Phaser.Input.Keyboard.KeyCodes.A,
             right: Phaser.Input.Keyboard.KeyCodes.D,
             space: Phaser.Input.Keyboard.KeyCodes.SPACE,
-            shift: Phaser.Input.Keyboard.KeyCodes.SHIFT
+            shift: Phaser.Input.Keyboard.KeyCodes.B
         }) as Phaser.Types.Input.Keyboard.CursorKeys;
 
         this.movementSpeed = 5;
@@ -45,6 +45,16 @@ export default class GameScene extends Phaser.Scene {
         const tileset = map.addTilesetImage('Snow', 'level-1');
         const ground = map.createLayer('ground', tileset);
         ground.setCollisionByProperty({ collides: true });
+        this.matter.world.convertTilemapLayer(ground);
+        // Change the label of the Matter body on tiles that do damage when the player touches.
+        // This makes it easier to check Matter collisions.
+        ground.forEachTile(function (tile) {
+            // In Tiled, the dangerous tiles have been given a "doesDamage" property
+            if (tile.properties.doesDamage)
+            {
+                tile.physics.matterBody.body.label = 'doesDamage';
+            }
+        });
        
         const objectsLayer = map.getObjectLayer('objects');
         objectsLayer.objects.forEach(objData => {
@@ -65,7 +75,7 @@ export default class GameScene extends Phaser.Scene {
 
         })
 
-        this.matter.world.convertTilemapLayer(ground);
+
     }
 
     update(t: number, dt: number) 
