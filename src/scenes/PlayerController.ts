@@ -151,6 +151,33 @@ export default class PlayerController
                         }            
                     })
                 }
+                else if (bodyA.gameObject instanceof Phaser.Physics.Matter.Sprite && bodyB.gameObject instanceof Phaser.Physics.Matter.Sprite) {
+                    const type = (bodyB.gameObject as Phaser.Physics.Matter.Sprite).getData('type');
+                    console.log(type);
+                    switch(type) {
+                        case 'star': 
+                        {
+                            // TODO: score starpoints
+                            break;
+                        }
+                        case 'coin': 
+                        {
+                            // TODO: score coinpoints
+                            break;
+                        }
+                        case 'health': 
+                        {
+                            // TODO: score healthpoints
+                            break;
+                        }
+                        case 'gem': 
+                        {
+                            // TODO: score gempoints
+                            break;
+                        }
+                    }
+                    bodyB.gameObject.destroy();
+                }
             }
         }, this);
 
@@ -200,7 +227,11 @@ export default class PlayerController
             this.pc.blocked.left = this.pc.numTouching.left > 0 ? true : false;
             this.pc.blocked.bottom = this.pc.numTouching.bottom > 0 ? true : false;
         });
+
     }
+
+
+
 
     private idleOnEnter()
     {

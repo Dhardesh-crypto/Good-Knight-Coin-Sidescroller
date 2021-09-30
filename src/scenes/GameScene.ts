@@ -36,6 +36,15 @@ export default class GameScene extends Phaser.Scene {
         this.load.atlas('ninjacat', 'assets/NinjaCat.png', 'assets/NinjaCat.json');
         this.load.image('level-1', 'assets/tilesheet/sheet-snow.png');
         this.load.tilemapTiledJSON('tilemap-level-1', 'assets/level-1.json');
+        this.load.image('coin', 'assets/coin.png');
+        this.load.image('health', 'assets/health.png');
+        this.load.image('star', 'assets/star.png');
+        this.load.image('sphere', 'assets/sphere.png');
+        this.load.image('heart', 'assets/heart.png');
+        this.load.image('tank', 'assets/tank.png');
+        this.load.image('gem1', 'assets/gem_blue.png');
+        this.load.image('gem2', 'assets/gem_green.png');
+        this.load.image('gem3', 'assets/gem_red.png');
     }
 
     create() 
@@ -63,12 +72,48 @@ export default class GameScene extends Phaser.Scene {
             switch(name) {
                 case 'ninjaCat-Spawn': {
                     this.ninjaCat = this.matter.add.sprite(x + (width * 0.5), y, 'ninjacat')
-                    .setScale(0.5)
-                    .setFixedRotation();
+                        .setScale(0.5)
+                        .setFixedRotation();
 
                     this.playerController = new PlayerController(this.ninjaCat, this.cursors, this.cursorsWASD, this.movementSpeed, this.jumpHeight, this);
 
                     this.cameras.main.startFollow(this.ninjaCat);        
+                    break;
+                }
+                case 'star': {
+                    const star = this.matter.add.sprite(x, y, 'star', undefined, 
+                    {   isStatic: true,
+                        isSensor: true     
+                    } )
+                    .setScale(0.2);
+                    star.setData('type', 'star');
+                    break;
+                }
+                case 'health': {
+                    const star = this.matter.add.sprite(x, y, 'health', undefined, 
+                    {   isStatic: true,
+                        isSensor: true     
+                    } )
+                    .setScale(0.2);
+                    star.setData('type', 'health');
+                    break;
+                } 
+                case 'coin': {
+                    const star = this.matter.add.sprite(x, y, 'coin', undefined, 
+                    {   isStatic: true,
+                        isSensor: true     
+                    } )
+                    .setScale(0.2);
+                    star.setData('type', 'coin');
+                    break;
+                } 
+                case 'gem': {
+                    const star = this.matter.add.sprite(x, y, `gem${Phaser.Math.Between(1,3)}`, undefined, 
+                    {   isStatic: true,
+                        isSensor: true     
+                    } )
+                    .setScale(0.2);
+                    star.setData('type', 'gem');
                     break;
                 } 
             }
