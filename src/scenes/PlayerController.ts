@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import StateMachine from '../statemachine/StateMachine';
 import { sharedInstance as events } from './EventCenter';
+import ObstaclesController from './ObstaclesController';
 
 export default class PlayerController
 {
@@ -13,12 +14,14 @@ export default class PlayerController
     private scene: Phaser.Scene;
     private pc: object;
     private playerBody:  Phaser.Physics.Matter.Matter.Bodies.rectangle;
+    private obstacles: ObstaclesController
 
     constructor(sprite: Phaser.Physics.Matter.Sprite, 
             cursors: Phaser.Types.Input.Keyboard.CursorKeys, 
             cursorsWASD: Phaser.Types.Input.Keyboard.CursorKeys,
             movementSpeed: integer,
             jumpHeight: integer,
+            obstacles: ObstaclesController,
             scene: Phaser.Scene) 
     {
         this.sprite = sprite;
@@ -26,6 +29,7 @@ export default class PlayerController
         this.cursorsWASD = cursorsWASD;
         this.movementSpeed = movementSpeed;
         this.jumpHeight = jumpHeight;
+        this.obstacles = obstacles;
         this.createAnimations();
         this.stateMachine = new StateMachine(this, 'player');
         this.scene = scene;
@@ -53,6 +57,9 @@ export default class PlayerController
             .addState('punching', {
                 onEnter: this.punchingOnEnter,
                 onUpdate: this.punchingOnUpdate
+            })
+            .addState('spike-hit', {
+                onEnter: this.spikeHitOnEnter
             })
             .setState('idle');
 
@@ -131,28 +138,10 @@ export default class PlayerController
                 var bodyA = event.pairs[i].bodyA;
                 var bodyB = event.pairs[i].bodyB;
 
-                if ((bodyA === this.playerBody && bodyB.label === 'doesDamage') ||
-                    (bodyB === this.playerBody && bodyA.label === 'doesDamage'))
+                if ((bodyA === this.playerBody && this.obstacles.is('spikes', bodyB)) ||
+                    (bodyB === this.playerBody && this.obstacles.is('spikes', bodyA))
                 {
-                    // Now color our player red to show damage has been done
-                    const primaryColor = Phaser.Display.Color.ValueToColor('0xffffff'); // white
-                    const woundedColor = Phaser.Display.Color.ValueToColor('0xff0000'); // red
-            
-                    this.scene.tweens.addCounter({
-                        from: 0,
-                        to: 100,
-                        duration: 300,
-                        ease: Phaser.Math.Easing.Sine.InOut,
-                        yoyo: true,
-                        onUpdate: tween => {
-                           const value = tween.getValue();
-                           const colorObject = Phaser.Display.Color.Interpolate.ColorWithColor(primaryColor, woundedColor, 100, value);
-                           const color = Phaser.Display.Color.GetColor(colorObject.r, colorObject.g, colorObject.b);
-                           this.pc.matterSprite.setTint(color);
-                        }            
-                    })
-                    events.emit('damage-collected');
-                    this.scene.cameras.main.shake(500, 0.025);
+                    this.stateMachine.setState('spike-hit');
                 }
                 else if (bodyA.gameObject instanceof Phaser.Physics.Matter.Sprite && bodyB.gameObject instanceof Phaser.Physics.Matter.Sprite) {
                     const type = (bodyB.gameObject as Phaser.Physics.Matter.Sprite).getData('type');
@@ -366,8 +355,33 @@ export default class PlayerController
     {
         this.sprite.play('punching');
     }
-    private punchingOnUpdate() {
+    private punchingOnUpdate() 
+    {
         this.sprite.on('animationcomplete', this.animComplete, this);
+    }
+    private spikeHitOnEnter() 
+    {
+        // Now color our player red to show damage has been done
+        const primaryColor = Phaser.Display.Color.ValueToColor('0xffffff'); // white
+        const woundedColor = Phaser.Display.Color.ValueToColor('0xff0000'); // red
+
+        this.scene.tweens.addCounter({
+            from: 0,
+            to: 100,
+            duration: 300,
+            ease: Phaser.Math.Easing.Sine.InOut,
+            yoyo: true,
+            onUpdate: tween => {
+                const value = tween.getValue();
+                const colorObject = Phaser.Display.Color.Interpolate.ColorWithColor(primaryColor, woundedColor, 100, value);
+                const color = Phaser.Display.Color.GetColor(colorObject.r, colorObject.g, colorObject.b);
+                this.pc.matterSprite.setTint(color);
+            }            
+        })
+        events.emit('damage-collected'); // transfer damage to UI
+        this.scene.cameras.main.shake(500, 0.005);
+        this.sprite.setVelocityY(-7); // Throw character back 
+        this.stateMachine.setState('idle');
     }
 
     private animComplete(animation, frame)

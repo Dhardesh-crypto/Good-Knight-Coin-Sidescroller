@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import ObstaclesController from './ObstaclesController';
 import PlayerController from './PlayerController';
 
 export default class GameScene extends Phaser.Scene {
@@ -9,6 +10,7 @@ export default class GameScene extends Phaser.Scene {
     private playerController?: PlayerController
     private movementSpeed! : integer; 
     private jumpHeight! : integer;
+    private obstacles!: ObstaclesController;
 
     constructor()
     {
@@ -29,13 +31,15 @@ export default class GameScene extends Phaser.Scene {
 
         this.movementSpeed = 5;
         this.jumpHeight = -13;
+
+        this.obstacles = new ObstaclesController();
     }
 
     preload() 
     {
         this.load.atlas('ninjacat', 'assets/NinjaCat.png', 'assets/NinjaCat.json');
-        this.load.image('level-1', 'assets/tilesheet/sheet-snow.png');
-        this.load.tilemapTiledJSON('tilemap-level-1', 'assets/level-1.json');
+        this.load.image('level-one', 'assets/tilesheet/sheet-ice.png');
+        this.load.tilemapTiledJSON('tilemap-level-one', 'assets/level-one.json');
         this.load.image('coin', 'assets/coin.png');
         this.load.image('health', 'assets/health.png');
         this.load.image('star', 'assets/star.png');
@@ -51,9 +55,10 @@ export default class GameScene extends Phaser.Scene {
     {
         this.scene.launch('ui');
 
-        const map = this.make.tilemap({ key: 'tilemap-level-1' });
-        const tileset = map.addTilesetImage('Snow', 'level-1');
+        const map = this.make.tilemap({ key: 'tilemap-level-one' });
+        const tileset = map.addTilesetImage('ice', 'level-one');
         const ground = map.createLayer('ground', tileset);
+        const obstacles = map.createLayer('obstacles', tileset);
         ground.setCollisionByProperty({ collides: true });
         this.matter.world.convertTilemapLayer(ground);
         // Change the label of the Matter body on tiles that do damage when the player touches.
@@ -62,13 +67,13 @@ export default class GameScene extends Phaser.Scene {
             // In Tiled, the dangerous tiles have been given a "doesDamage" property
             if (tile.properties.doesDamage)
             {
-                tile.physics.matterBody.body.label = 'doesDamage';
+        //        tile.physics.matterBody.body.label = 'doesDamage';
             }
         });
        
         const objectsLayer = map.getObjectLayer('objects');
         objectsLayer.objects.forEach(objData => {
-            const { x = 0, y = 0, name, width = 0 } = objData;
+            const { x = 0, y = 0, name, width = 0, height = 0 } = objData;
 
             switch(name) {
                 case 'ninjaCat-Spawn': {
@@ -76,7 +81,14 @@ export default class GameScene extends Phaser.Scene {
                         .setScale(0.5)
                         .setFixedRotation();
 
-                    this.playerController = new PlayerController(this.ninjaCat, this.cursors, this.cursorsWASD, this.movementSpeed, this.jumpHeight, this);
+                    this.playerController = new PlayerController(
+                        this.ninjaCat, 
+                        this.cursors, 
+                        this.cursorsWASD, 
+                        this.movementSpeed, 
+                        this.jumpHeight,
+                        this.obstacles, 
+                        this);
 
                     this.cameras.main.startFollow(this.ninjaCat);        
                     break;
@@ -91,32 +103,38 @@ export default class GameScene extends Phaser.Scene {
                     break;
                 }
                 case 'health': {
-                    const star = this.matter.add.sprite(x, y, 'health', undefined, 
+                    const health = this.matter.add.sprite(x, y, 'health', undefined, 
                     {   isStatic: true,
                         isSensor: true     
                     } )
                     .setScale(0.2);
-                    star.setData('type', 'health');
+                    health.setData('type', 'health');
                     break;
                 } 
                 case 'coin': {
-                    const star = this.matter.add.sprite(x, y, 'coin', undefined, 
+                    const coin = this.matter.add.sprite(x, y, 'coin', undefined, 
                     {   isStatic: true,
                         isSensor: true     
                     } )
                     .setScale(0.2);
-                    star.setData('type', 'coin');
+                    coin.setData('type', 'coin');
                     break;
                 } 
                 case 'gem': {
-                    const star = this.matter.add.sprite(x, y, `gem${Phaser.Math.Between(1,3)}`, undefined, 
+                    const gem = this.matter.add.sprite(x, y, `gem${Phaser.Math.Between(1,3)}`, undefined, 
                     {   isStatic: true,
                         isSensor: true     
                     } )
                     .setScale(0.2);
-                    star.setData('type', 'gem');
+                    gem.setData('type', 'gem');
                     break;
-                } 
+                }
+                case 'spikes': {
+                    const spike = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
+                        isStatic: true
+                    })
+                    this.obstacles.add('spikes', spike);
+                }
             }
 
         })

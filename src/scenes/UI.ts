@@ -35,23 +35,18 @@ export default class UI extends Phaser.Scene
 
     private handleStarCollected() 
     {
-        console.log('Star collected');
-        this.points += 1;
-        this.pointsLabel.setText(`Points: ${this.points}`);
+        this.pointsLabel.setText(`Points: ${++this.points}`);
     }
 
     private handleCoinCollected() 
     {
-        console.log('Coin collected');
-        this.points += 1;
-        this.pointsLabel.setText(`Points: ${this.points}`);
+        this.pointsLabel.setText(`Points: ${++this.points}`);
     }
 
     private handleHealthCollected()
     {
-        console.log('Health collected');
-        this.points += 1;
-        this.pointsLabel.setText(`Points: ${this.points}`);
+        this.health += 50;
+        this.healthLabel.setText(`Health: ${this.health}%`);
     }
 
     private handleGemCollected()
