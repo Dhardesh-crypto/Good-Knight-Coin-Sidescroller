@@ -1,5 +1,6 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 import StateMachine from '../statemachine/StateMachine';
+import { sharedInstance as events } from './EventCenter';
 
 export default class PlayerController
 {
@@ -150,29 +151,31 @@ export default class PlayerController
                            this.pc.matterSprite.setTint(color);
                         }            
                     })
+                    events.emit('damage-collected');
+                    this.scene.cameras.main.shake(500, 0.025);
                 }
                 else if (bodyA.gameObject instanceof Phaser.Physics.Matter.Sprite && bodyB.gameObject instanceof Phaser.Physics.Matter.Sprite) {
                     const type = (bodyB.gameObject as Phaser.Physics.Matter.Sprite).getData('type');
-                    console.log(type);
+                   // console.log(type);
                     switch(type) {
                         case 'star': 
                         {
-                            // TODO: score starpoints
+                            events.emit('star-collected');
                             break;
                         }
                         case 'coin': 
                         {
-                            // TODO: score coinpoints
+                            events.emit('coin-collected');
                             break;
                         }
                         case 'health': 
                         {
-                            // TODO: score healthpoints
+                            events.emit('health-collected');
                             break;
                         }
                         case 'gem': 
                         {
-                            // TODO: score gempoints
+                            events.emit('gem-collected');
                             break;
                         }
                     }

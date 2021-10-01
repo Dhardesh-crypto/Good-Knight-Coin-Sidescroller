@@ -49,6 +49,7 @@ export default class GameScene extends Phaser.Scene {
 
     create() 
     {
+        this.scene.launch('ui');
 
         const map = this.make.tilemap({ key: 'tilemap-level-1' });
         const tileset = map.addTilesetImage('Snow', 'level-1');
