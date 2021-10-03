@@ -1,0 +1,125 @@
+{
+	"textures": [
+		{
+			"image": "monster-one.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 224,
+				"h": 1263
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "monster02_idle_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 256
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 1,
+						"w": 222,
+						"h": 254
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 222,
+						"h": 254
+					}
+				},
+				{
+					"filename": "monster02_idle_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 256
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 6,
+						"w": 222,
+						"h": 249
+					},
+					"frame": {
+						"x": 1,
+						"y": 257,
+						"w": 222,
+						"h": 249
+					}
+				},
+				{
+					"filename": "monster02_idle_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 256
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 1,
+						"w": 222,
+						"h": 254
+					},
+					"frame": {
+						"x": 1,
+						"y": 508,
+						"w": 222,
+						"h": 254
+					}
+				},
+				{
+					"filename": "monster02_walk_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 256
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 1,
+						"w": 221,
+						"h": 251
+					},
+					"frame": {
+						"x": 1,
+						"y": 764,
+						"w": 221,
+						"h": 251
+					}
+				},
+				{
+					"filename": "monster02_walk_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 256
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 6,
+						"w": 218,
+						"h": 245
+					},
+					"frame": {
+						"x": 1,
+						"y": 1017,
+						"w": 218,
+						"h": 245
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:e1e8c119e646736f4ad5c2981bfdeaa6:80a03af6115e4b559892c06d1d9037c9:f341f0e39f198fac4940702845de80e5$"
+	}
+}

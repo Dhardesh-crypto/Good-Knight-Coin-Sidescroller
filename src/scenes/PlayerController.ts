@@ -14,7 +14,9 @@ export default class PlayerController
     private scene: Phaser.Scene;
     private pc: object;
     private playerBody:  Phaser.Physics.Matter.Matter.Bodies.rectangle;
+    private attackHitbox: Phaser.Physics.Matter.MatterPhysics.Bodies.rectangle;
     private obstacles: ObstaclesController
+    private health = 100
 
     constructor(sprite: Phaser.Physics.Matter.Sprite, 
             cursors: Phaser.Types.Input.Keyboard.CursorKeys, 
@@ -75,6 +77,7 @@ export default class PlayerController
         // example for more explanation.
         this.pc = {
             matterSprite: this.sprite,
+            hitBox: this.attackHitbox,
             blocked: {
                 left: false,
                 right: false,
@@ -128,6 +131,8 @@ export default class PlayerController
             .setExistingBody(compoundBody)
             .setFixedRotation() // Sets max inertia to prevent rotation
             .setPosition(origX, origY);
+
+        // this.attackHitbox = this.scene.matter.add.rectangle(0,0, 32, 64, { isSensor: true } );
     }
 
     private handleMatterCollisions() {
@@ -150,25 +155,35 @@ export default class PlayerController
                         case 'star': 
                         {
                             events.emit('star-collected');
+                            bodyB.gameObject.destroy();
                             break;
                         }
                         case 'coin': 
                         {
                             events.emit('coin-collected');
+                            bodyB.gameObject.destroy();
                             break;
                         }
                         case 'health': 
                         {
-                            events.emit('health-collected');
+                            const healthBonus = (bodyB.gameObject as Phaser.Physics.Matter.Sprite).getData('healthPoints') ?? 30;  
+                            this.health = Phaser.Math.Clamp(this.health + healthBonus, 0, 100); 
+                            events.emit('health-changed', this.health);
+                            bodyB.gameObject.destroy();
                             break;
                         }
                         case 'gem': 
                         {
                             events.emit('gem-collected');
+                            bodyB.gameObject.destroy();
+                            break;
+                        }
+                        case 'monster':
+                        {
+                            events.emit('monster-collected');
                             break;
                         }
                     }
-                    bodyB.gameObject.destroy();
                 }
             }
         }, this);
@@ -221,9 +236,6 @@ export default class PlayerController
         });
 
     }
-
-
-
 
     private idleOnEnter()
     {
@@ -378,7 +390,8 @@ export default class PlayerController
                 this.pc.matterSprite.setTint(color);
             }            
         })
-        events.emit('damage-collected'); // transfer damage to UI
+        this.health = Phaser.Math.Clamp(this.health - 10, 0, 100); 
+        events.emit('health-changed', this.health);
         this.scene.cameras.main.shake(500, 0.005);
         this.sprite.setVelocityY(-7); // Throw character back 
         this.stateMachine.setState('idle');

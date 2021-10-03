@@ -1,13 +1,15 @@
 import Phaser from 'phaser'
 import ObstaclesController from './ObstaclesController';
 import PlayerController from './PlayerController';
+import MonsterController from './MonsterController';
 
 export default class GameScene extends Phaser.Scene {
 
     private cursors! : Phaser.Types.Input.Keyboard.CursorKeys;
     private cursorsWASD! : Phaser.Types.Input.Keyboard.CursorKeys;
     private ninjaCat? : Phaser.Physics.Matter.Sprite;
-    private playerController?: PlayerController
+    private playerController?: PlayerController;
+    private monsterController?: MonsterController;
     private movementSpeed! : integer; 
     private jumpHeight! : integer;
     private obstacles!: ObstaclesController;
@@ -38,6 +40,7 @@ export default class GameScene extends Phaser.Scene {
     preload() 
     {
         this.load.atlas('ninjacat', 'assets/NinjaCat.png', 'assets/NinjaCat.json');
+        this.load.atlas('monster1', 'assets/monster-one.png', 'assets/monster-one.json');
         this.load.image('level-one', 'assets/tilesheet/sheet-ice.png');
         this.load.tilemapTiledJSON('tilemap-level-one', 'assets/level-one.json');
         this.load.image('coin', 'assets/coin.png');
@@ -93,6 +96,20 @@ export default class GameScene extends Phaser.Scene {
                     this.cameras.main.startFollow(this.ninjaCat);        
                     break;
                 }
+                case 'monster': {
+                    const monster = this.matter.add.sprite(x + (width * 0.5), y, 'monster1')
+                    .setScale(0.3)
+                    .setFixedRotation();
+                    monster.setData('type', 'monster');
+
+                    new MonsterController(
+                        monster, 
+                        this.movementSpeed, 
+                        this.jumpHeight,
+                        this.obstacles, 
+                        this);
+                    break;
+                }
                 case 'star': {
                     const star = this.matter.add.sprite(x, y, 'star', undefined, 
                     {   isStatic: true,
@@ -109,6 +126,7 @@ export default class GameScene extends Phaser.Scene {
                     } )
                     .setScale(0.2);
                     health.setData('type', 'health');
+                   // health.setData('healthPoints', 30);
                     break;
                 } 
                 case 'coin': {
